@@ -5,12 +5,32 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <!-- Role -->
+        <div class="mt-4">
+            <x-input-label for="role" :value="__('Role')" />
+            <select id="role" name="role" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                <option value="student">Student</option>
+                <option value="parent">Parent</option>
+                <option value="teacher">Teacher</option>
+                <option value="admin">Admin</option>
+                <option value="staff">Staff</option>
+                <option value="principal">Principal</option>
+            </select>
+            <x-input-error :messages="$errors->get('role')" class="mt-2" />
+        </div>            
+
+        <!-- Phone or Email Address -->
+        <div class="mt-4">
+            <x-input-label for="login" :value="__('Phone or Email')" />
+            <x-text-input id="login" class="block mt-1 w-full"
+                        type="text" 
+                        name="login" 
+                        :value="old('login')" 
+                        required autofocus 
+                        autocomplete="username" />
+            <x-input-error :messages="$errors->get('login')" class="mt-2" />
         </div>
+
 
         <!-- Password -->
         <div class="mt-4">
